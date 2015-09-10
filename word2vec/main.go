@@ -807,7 +807,7 @@ func TrainModel() {
 				binary.Write(fo, binary.LittleEndian, syn0[a*layer1_size:(a+1)*layer1_size])
 			} else {
 				for b := 0; b < layer1_size; b++ {
-					fmt.Fprintf(fo, "%lf ", syn0[a*layer1_size+b])
+					fmt.Fprintf(fo, "%f ", syn0[a*layer1_size+b])
 				}
 			}
 			fmt.Fprintf(fo, "\n")
