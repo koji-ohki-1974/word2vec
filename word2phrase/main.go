@@ -295,7 +295,7 @@ func TrainModel() {
 		}
 		cn++
 		if (debug_mode > 1) && (cn%100000 == 0) {
-			fmt.Fprintf(os.Stderr, "Words written: %lldK%c", cn/1000, 13)
+			fmt.Fprintf(os.Stderr, "Words written: %dK%c", cn/1000, 13)
 			//      fflush(stdout);
 		}
 		oov = 0
