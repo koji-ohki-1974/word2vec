@@ -46,8 +46,10 @@ func main() {
 		vocab[b], err = br.ReadString(' ')
 		vocab[b] = vocab[b][:len(vocab[b])-1]
 		vocab[b] = strings.Replace(vocab[b], "\n", "", -1)
-		err = binary.Read(br, binary.LittleEndian, M[b*size:b*size+size])
-		failOnError(err, "Cannot read input file")
+		for i := b * size; i < b*size+size; i++ {
+			err = binary.Read(br, binary.LittleEndian, float32(M[i]))
+			failOnError(err, "Cannot read input file")
+		}
 		length = 0
 		for a = 0; a < size; a++ {
 			length += M[a+b*size] * M[a+b*size]
