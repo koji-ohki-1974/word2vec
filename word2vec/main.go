@@ -804,7 +804,9 @@ func TrainModel() {
 		for a := 0; a < vocab_size; a++ {
 			fmt.Fprintf(fo, "%s ", vocab[a].word)
 			if binaryf != 0 {
-				binary.Write(fo, binary.LittleEndian, syn0[a*layer1_size:(a+1)*layer1_size])
+				for i := a * layer1_size; i < (a+1)*layer1_size; i++ {
+					binary.Write(fo, binary.LittleEndian, float32(syn0[i]))
+				}
 			} else {
 				for b := 0; b < layer1_size; b++ {
 					fmt.Fprintf(fo, "%f ", syn0[a*layer1_size+b])
